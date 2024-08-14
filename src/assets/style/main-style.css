@@ -872,32 +872,32 @@ html {
 
 .box1{
   top: 20%;
-  background-image: url("../media/integration.png");
+  background-image: url("../media/payment.png");
   left: 15%;
 }
 
 .box1:hover{
-  background-image: url("../media/integrationActive.png");
+  background-image: url("../media/paymentActive.png");
 }
 
 .box2{
   top: 50%;
-  background-image: url("../media/settlement.png");
+  background-image: url("../media/integration.png");
   left:20px;
 }
 
 .box2:hover{
-  background-image: url("../media/settlementActive.png");
+  background-image: url("../media/integrationActive.png");
 }
 
 .box3{
   top: 73%;
-  background-image: url("../media/payment.png");
+  background-image: url("../media/global.png");
   left:35%;
 }
 
 .box3:hover{
-  background-image: url("../media/paymentActive.png");
+  background-image: url("../media/globalActive.png");
 }
 
 .box4{
@@ -912,52 +912,52 @@ html {
 
 .box5{
   top: 60%;
-  background-image: url("../media/route.png");
+  background-image: url("../media/cc.png");
   left:20%;
 }
 
 .box5:hover{
-  background-image: url("../media/routeActive.png");
+  background-image: url("../media/ccActive.png");
 }
 
 .box6{
   top: 80%;
-  background-image: url("../media/monitoring.png");
+  background-image: url("../media/apm.png");
   left:10%;
 }
 
 .box6:hover{
-  background-image: url("../media/monitoringActive.png");
+  background-image: url("../media/apmActive.png");
 }
 
 .box7{
   top: 60%;
-  background-image: url("../media/cc.png");
+  background-image: url("../media/reporting.png");
   left:90%;
 }
 
 .box7:hover{
-  background-image: url("../media/ccActive.png");
+  background-image: url("../media/reportingActive.png");
 }
 
 .box8{
   top: 20%;
-  background-image: url("../media/apm.png");
+  background-image: url("../media/settlement.png");
   left:92%;
 }
 
 .box8:hover{
-  background-image: url("../media/apmActive.png");
+  background-image: url("../media/settlementActive.png");
 }
 
 .box9{
   top: 85%;
-  background-image: url("../media/global.png");
+  background-image: url("../media/route.png");
   left:80%;
 }
 
 .box9:hover{
-  background-image: url("../media/globalActive.png");
+  background-image: url("../media/routeActive.png");
 }
 
 .box10{
@@ -972,12 +972,12 @@ html {
 
 .box11{
   top: 65%;
-  background-image: url("../media/reporting.png");
+  background-image: url("../media/monitoring.png");
   left:70%;
 }
 
 .box11:hover{
-  background-image: url("../media/reportingActive.png");
+  background-image: url("../media/monitoringActive.png");
 }
 
 

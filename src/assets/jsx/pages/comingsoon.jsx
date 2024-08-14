@@ -149,37 +149,37 @@ export class comingsoon extends Component {
         <div id="comingSoon-Page">
           <div className="comingSoon-Page">
             <div className="animation-box box1">
-            <span class="hover-text">Integration</span>
+            <span class="hover-text">Payment</span>
             </div>
             <div className="animation-box box2">
-            <span class="hover-text">Settlement</span>
+            <span class="hover-text">Integration</span>
             </div>
             <div className="animation-box box3">
-            <span class="hover-text">Payment</span>
+            <span class="hover-text">Global</span>
             </div>
             <div className="animation-box box4">
             <span class="hover-text">Transaction</span>
             </div>
             <div className="animation-box box5">
-            <span class="hover-text">Routing</span>
-            </div>
-            <div className="animation-box box6">
-            <span class="hover-text">Monitoring</span>
-            </div>
-            <div className="animation-box box7">
             <span class="hover-text">Card</span>
             </div>
-            <div className="animation-box box8">
+            <div className="animation-box box6">
             <span class="hover-text">APMs</span>
             </div>
+            <div className="animation-box box7">
+            <span class="hover-text">Reporting</span>
+            </div>
+            <div className="animation-box box8">
+            <span class="hover-text">Settlements</span>
+            </div>
             <div className="animation-box box9">
-            <span class="hover-text">Global</span>
+            <span class="hover-text">Routing</span>
             </div>
             <div className="animation-box box10">
             <span class="hover-text">Analytics</span>
             </div>
             <div className="animation-box box11">
-            <span class="hover-text">Reporting</span>
+            <span class="hover-text">Monitoring</span>
             </div>
             {showHeader && (
               <>
