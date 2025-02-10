@@ -9,7 +9,7 @@ import Button from "./utilitis/Button";
 import FlagIcon from "../media/icon/flagicons";
 
 const TransactionTable = ({ headerLabels = [], tableData = [], onViewClick, isCopy = false, onTotalAmountChange = false, isAction = true, pagination = true, currentPage, rowsPerPage, setCurrentPage, loading, transactionTotal = 0, handleChildAction }) => {
-    const role = localStorage.getItem("role");
+    const role = sessionStorage.getItem("role");
     const [activeOptionRow, setActiveOptionRow] = useState(null);
     const [menuPosition, setMenuPosition] = useState('below');
     const [hoveredRow, setHoveredRow] = useState(null);

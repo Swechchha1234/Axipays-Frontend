@@ -54,7 +54,7 @@ const ForgetPasswordModal = ({
                 const response = await apiRequest(apiEndpoint, "POST", data);
 
                 if (response.status === "success") {
-                    localStorage.setItem("generatedOtp", generatedOtp);
+                    sessionStorage.setItem("generatedOtp", generatedOtp);
                     setStep(2);
                 } else {
                 }
@@ -80,7 +80,7 @@ const ForgetPasswordModal = ({
 
     const handleOtpSubmit = () => {
         const enteredOtp = otp.join("");  
-        const storedOtp = localStorage.getItem("generatedOtp");  
+        const storedOtp = sessionStorage.getItem("generatedOtp");  
     
         if (enteredOtp === storedOtp) {
             setStep(3);  
@@ -94,9 +94,8 @@ const ForgetPasswordModal = ({
                 const data = { email, password:newPassword };
                 const apiEndpoint = 'api/v1/auth/resetpassword'; 
                 const response = await apiRequest(apiEndpoint, "PATCH", data);
-                console.log(response)
     
-                if (response.status === "success") {
+                if (response.success) {
                     onClose(); 
                 } else {
                 }
@@ -109,9 +108,7 @@ const ForgetPasswordModal = ({
 
     const handleOtpChange = (value, index) => {
         const updatedOtp = [...otp];
-        
         updatedOtp[index] = value.slice(-1); 
-        console.log(updatedOtp)
         setOtp(updatedOtp);
 
         if (value && index < otp.length - 1) {

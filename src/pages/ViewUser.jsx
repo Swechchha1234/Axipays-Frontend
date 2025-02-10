@@ -18,7 +18,7 @@ import VolumeGraph from "../components/Charts/VolumeGrapgh.jsx";
 
 function ViewUser() {
     const currentYear = new Date().getFullYear();
-    const role = localStorage.getItem("role");
+    const role = sessionStorage.getItem("role");
     const [activeTab, setActiveTab] = useState("Business Details");
     const [merchant, setMerchant] = useState(null);
     const [, setErrorMessage] = useState("");

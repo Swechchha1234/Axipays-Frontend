@@ -32,9 +32,9 @@ function Dashboard() {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [transactionTotal, setTransactionTotal] = useState(0);
- 
-	const userName = localStorage.getItem("userName")
-	const role = localStorage.getItem("role");
+
+	const userName = sessionStorage.getItem("userName")
+	const role = sessionStorage.getItem("role");
 	const currentYear = new Date().getFullYear();
 
 	// const countryData = [
@@ -89,7 +89,6 @@ function Dashboard() {
 				`api/v1/txn?pageSize=${pageSize}&pageNumber=${pageNumber}`,
 				"GET"
 			);
-			
 			const transactions = response?.data?.transactions;
 
 			if (Array.isArray(transactions)) {
@@ -176,192 +175,251 @@ function Dashboard() {
 		{ heading: "Currency", label: "currency_code" },
 	]);
 
+	const footerContent = (
+		<div className="footer-text-container">
+		  <div className="footer-text-column">
+			<div className="footer-text">
+			  <span data-title="P">P</span>
+			  <span data-title="r">r</span>
+			  <span data-title="o">o</span>
+			  <span data-title="c">c</span>
+			  <span data-title="e">e</span>
+			  <span data-title="s">s</span>
+			  <span data-title="s">s</span>
+			  <span
+				data-title="&#x25A0;"
+				className="square"
+				style={{ fontSize: '50px' }}
+			  >
+				&#x25A0;
+			  </span>
+			  <span></span>
+			</div>
+			<div className="footer-text-inline">
+			  <div className="footer-text">
+				<span data-title="T">T</span>
+				<span data-title="r">r</span>
+				<span data-title="a">a</span>
+				<span data-title="c">c</span>
+				<span data-title="k">k</span>
+				<span
+				  data-title="&#x25A0;"
+				  className="square"
+				  style={{ fontSize: '50px' }}
+				>
+				  &#x25A0;
+				</span>
+			  </div>
+	  
+			  <div className="footer-text">
+				<span data-title="G">G</span>
+				<span data-title="r">r</span>
+				<span data-title="o">o</span>
+				<span data-title="w">w</span>
+				<span
+				  data-title="&#x25A0;"
+				  className="square"
+				  style={{ fontSize: '50px' }}
+				>
+				  &#x25A0;
+				</span>
+			  </div>
+			</div>
+			<img src={footerimage} alt="footer-img" />
+	  
+			<p className="footer-tag-line">
+			  ©{currentYear} Axipays. All rights reserved.
+			</p>
+		  </div>
+		</div>
+	  );	  
+
 	if (role === "admin" || role === "client") {
 		return (
 			<>
 				<Header />
 				<Sidebar />
 				{loading ? (
-                <div className="main-screen">
-                    <Skeleton />
-                </div>
-            ) : (
-				<div className="main-screen dashboard">
-					<Heading heading={headings.dashboard} />
-					{/* Cards showing stats about volume and traffic for a single day for each currency*/}
-
-					<div className="db-glance">
-						<div className="db-glance-date-selector">
-							<p>Today</p>
-							<div className="ic">
-								<Icon name="keyboard_arrow_down" width={20} height={20} color="#003366" />
-							</div>
-						</div>
-						<div className="db-glance-top">
-							<h3>Welcome back,&nbsp; {userName}</h3>
-							<p>Today's latest updates await you,</p>
-						</div>
-						<div className="db-glance-bottom">
-							<div className="today-stats-div">
-								<div className="today-stats-head">
-									<div className="no-hover-icon-head">
-										<div className="no-hover-icon">
-											<Icon name="sales" width={22} height={22} color="#002966" />
-										</div>
-										<h5 className="db-div-head">Total Volume</h5>
-									</div>
-									<h2>$00,000</h2>
-								</div>
-								<div className="today-stats-values">
-									<div className="today-stats-value-row">
-										<div className="no-hover-icon-head">
-											<div className="no-hover-icon">
-												<Icon name="dollar" width={20} height={20} color="#002966" />
-											</div>
-											<h6 className="db-div-head">USD</h6>
-										</div>
-										<div className="no-hover-icon-head">
-											<p className="total-counts">$00,000</p>
-											<div className="percent-div">
-												<p>0%</p>
-											</div>
-										</div>
-									</div>
-
-									<div className="today-stats-value-row">
-										<div className="no-hover-icon-head">
-											<div className="no-hover-icon">
-												<Icon name="euro" width={20} height={20} color="#002966" />
-											</div>
-											<h6 className="db-div-head">EUR</h6>
-										</div>
-										<div className="no-hover-icon-head">
-											<p className="total-counts">$00,000</p>
-											<div className="percent-div">
-												<p>0%</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="today-stats-div">
-								<div className="today-stats-head">
-									<div className="no-hover-icon-head">
-										<div className="no-hover-icon">
-											<Icon name="traffic" width={22} height={22} color="#002966" />
-										</div>
-										<h5 className="db-div-head">Traffic Status</h5>
-									</div>
-									<h2>00,000</h2>
-								</div>
-								<div className="today-stats-values">
-									<div className="today-stats-value-row">
-										<div className="no-hover-icon-head">
-											<div className="no-hover-icon">
-												<Icon name="dollar" width={20} height={20} color="#002966" />
-											</div>
-											<h6 className="db-div-head">USD</h6>
-										</div>
-										<div className="no-hover-icon-head">
-											<p className="total-counts">00,000</p>
-											<div className="percent-div">
-												<p>0%</p>
-											</div>
-										</div>
-									</div>
-
-									<div className="today-stats-value-row">
-										<div className="no-hover-icon-head">
-											<div className="no-hover-icon">
-												<Icon name="euro" width={20} height={20} color="#002966" />
-											</div>
-											<h6 className="db-div-head">EUR</h6>
-										</div>
-										<div className="no-hover-icon-head">
-											<p className="total-counts">00,000</p>
-											<div className="percent-div traffic-percent-div">
-												<p>0%</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="glance-show-more-div">
-								<Icon name="vertical_dots" width={22} height={22} color="#002966" />
-							</div>
-						</div>
+					<div className="main-screen">
+						<Skeleton />
 					</div>
+				) : (
+					<div className="main-screen dashboard">
+						<Heading heading={headings.dashboard} />
+						{/* Cards showing stats about volume and traffic for a single day for each currency*/}
 
-					{/* {Filters} */}
-
-					<div className="db-filters">
-						<div className="manage-main-head db-filters-head">
-							<h4>Customization</h4>
-						</div>
-						{role === "client" ? null : (
-							<div className="db-filters-button">
-								{isOpen && (
-									<div className={`box-row ${isAnimating ? 'close' : 'open'}`}>
-										{['merchant', 'acquirer', 'usd', 'from', 'to'].map((label, index) => (
-											<div className={`box-content ${label === 'from' || label === 'to' ? 'tofrominput' : ''}`} key={index}>
-												<p className="db-filter-icons">
-													<Icon name={iconMap[label]} width={22} height={22} color="#002966" />
-													{label.charAt(0).toUpperCase() + label.slice(1)}
-												</p>
-												<Icon
-													name="keyboard_arrow_down"
-													width={23}
-													height={23}
-													color="#002966"
-													className="icon-cursor"
-													onClick={() => toggleExpand(label)}
-												/>
-												{expandedItems === label && (
-													<div className="dropdown-content">
-														{label === 'from' || label === 'to' ? (
-															<input
-																type="date"
-																onChange={(e) => handleDateChange(label, e.target.value)}
-															/>
-														) : (
-															<p>Dropdown content for {label}</p>
-														)}
-													</div>
-												)}
-											</div>
-										))}
-									</div>
-								)}
-								<div className="no-hover-icon no-hover-filter-icon" onClick={toggleBox}>
-									<Icon name={isOpen ? 'close_fill' : 'dashboard_customize'} width={22} height={22} color="#002966" />
+						<div className="db-glance">
+							<div className="db-glance-date-selector">
+								<p>Today</p>
+								<div className="ic">
+									<Icon name="keyboard_arrow_down" width={20} height={20} color="#003366" />
 								</div>
-
 							</div>
-						)}
-					</div>
-
-					{/* Cards showing stats about volume, traffic and approvals for a selected range of 7 days*/}
-
-					<div className="db-details">
-						<div className="db-details-approvals">
-							<div className="approvals-div">
-								<div className="today-stats-head">
-									<div className="no-hover-icon-head">
-										<div className="no-hover-icon">
-											<Icon name="piechart" width={22} height={22} color="#002966" />
+							<div className="db-glance-top">
+								<h3>Welcome back,&nbsp; {userName}</h3>
+								<p>Today's latest updates await you,</p>
+							</div>
+							<div className="db-glance-bottom">
+								<div className="today-stats-div">
+									<div className="today-stats-head">
+										<div className="no-hover-icon-head">
+											<div className="no-hover-icon">
+												<Icon name="sales" width={22} height={22} color="#002966" />
+											</div>
+											<h5 className="db-div-head">Total Volume</h5>
 										</div>
-										<h5 className="db-div-head">Weekly Ratio</h5>
+										<h2>$00,000</h2>
 									</div>
-									<Icon
-										name="right_diagonal_up_arrow"
-										width={22}
-										height={22}
-										color="#0066ff"
-										className="icon-cursor"
-									/>
-								</div>
+									<div className="today-stats-values">
+										<div className="today-stats-value-row">
+											<div className="no-hover-icon-head">
+												<div className="no-hover-icon">
+													<Icon name="dollar" width={20} height={20} color="#002966" />
+												</div>
+												<h6 className="db-div-head">USD</h6>
+											</div>
+											<div className="no-hover-icon-head">
+												<p className="total-counts">$00,000</p>
+												<div className="percent-div">
+													<p>0%</p>
+												</div>
+											</div>
+										</div>
 
-								{/* <div className="stackedbar-info">
+										<div className="today-stats-value-row">
+											<div className="no-hover-icon-head">
+												<div className="no-hover-icon">
+													<Icon name="euro" width={20} height={20} color="#002966" />
+												</div>
+												<h6 className="db-div-head">EUR</h6>
+											</div>
+											<div className="no-hover-icon-head">
+												<p className="total-counts">$00,000</p>
+												<div className="percent-div">
+													<p>0%</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className="today-stats-div">
+									<div className="today-stats-head">
+										<div className="no-hover-icon-head">
+											<div className="no-hover-icon">
+												<Icon name="traffic" width={22} height={22} color="#002966" />
+											</div>
+											<h5 className="db-div-head">Traffic Status</h5>
+										</div>
+										<h2>00,000</h2>
+									</div>
+									<div className="today-stats-values">
+										<div className="today-stats-value-row">
+											<div className="no-hover-icon-head">
+												<div className="no-hover-icon">
+													<Icon name="dollar" width={20} height={20} color="#002966" />
+												</div>
+												<h6 className="db-div-head">USD</h6>
+											</div>
+											<div className="no-hover-icon-head">
+												<p className="total-counts">00,000</p>
+												<div className="percent-div">
+													<p>0%</p>
+												</div>
+											</div>
+										</div>
+
+										<div className="today-stats-value-row">
+											<div className="no-hover-icon-head">
+												<div className="no-hover-icon">
+													<Icon name="euro" width={20} height={20} color="#002966" />
+												</div>
+												<h6 className="db-div-head">EUR</h6>
+											</div>
+											<div className="no-hover-icon-head">
+												<p className="total-counts">00,000</p>
+												<div className="percent-div traffic-percent-div">
+													<p>0%</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className="glance-show-more-div">
+									<Icon name="vertical_dots" width={22} height={22} color="#002966" />
+								</div>
+							</div>
+						</div>
+
+						{/* {Filters} */}
+
+						<div className="db-filters">
+							<div className="manage-main-head db-filters-head">
+								<h4>Customization</h4>
+							</div>
+							{role === "client" ? null : (
+								<div className="db-filters-button">
+									{isOpen && (
+										<div className={`box-row ${isAnimating ? 'close' : 'open'}`}>
+											{['merchant', 'acquirer', 'usd', 'from', 'to'].map((label, index) => (
+												<div className={`box-content ${label === 'from' || label === 'to' ? 'tofrominput' : ''}`} key={index}>
+													<p className="db-filter-icons">
+														<Icon name={iconMap[label]} width={22} height={22} color="#002966" />
+														{label.charAt(0).toUpperCase() + label.slice(1)}
+													</p>
+													<Icon
+														name="keyboard_arrow_down"
+														width={23}
+														height={23}
+														color="#002966"
+														className="icon-cursor"
+														onClick={() => toggleExpand(label)}
+													/>
+													{expandedItems === label && (
+														<div className="dropdown-content">
+															{label === 'from' || label === 'to' ? (
+																<input
+																	type="date"
+																	onChange={(e) => handleDateChange(label, e.target.value)}
+																/>
+															) : (
+																<p>Dropdown content for {label}</p>
+															)}
+														</div>
+													)}
+												</div>
+											))}
+										</div>
+									)}
+									<div className="no-hover-icon no-hover-filter-icon" onClick={toggleBox}>
+										<Icon name={isOpen ? 'close_fill' : 'dashboard_customize'} width={22} height={22} color="#002966" />
+									</div>
+
+								</div>
+							)}
+						</div>
+
+						{/* Cards showing stats about volume, traffic and approvals for a selected range of 7 days*/}
+
+						<div className="db-details">
+							<div className="db-details-approvals">
+								<div className="approvals-div">
+									<div className="today-stats-head">
+										<div className="no-hover-icon-head">
+											<div className="no-hover-icon">
+												<Icon name="piechart" width={22} height={22} color="#002966" />
+											</div>
+											<h5 className="db-div-head">Weekly Ratio</h5>
+										</div>
+										<Icon
+											name="right_diagonal_up_arrow"
+											width={22}
+											height={22}
+											color="#0066ff"
+											className="icon-cursor"
+										/>
+									</div>
+
+									{/* <div className="stackedbar-info">
 									<div className="stacked-bar-status-info">
 										{[
 											{ label: 'Success', amount: '$ 1,234,324', bulletColor: '#005CB8' },
@@ -382,36 +440,36 @@ function Dashboard() {
 										View More
 									</div>
 								</div> */}
-								<div className="stacked-bar-chart stacked-line-chart">
-									{" "}
-									<StackedBarChart fromDate={fromDate} toDate={toDate} />
-								</div>
-							</div>
-
-							<div className="approvals-div">
-								<div className="today-stats-head">
-									<div className="no-hover-icon-head">
-										<div className="no-hover-icon">
-											<Icon name="sales" width={22} height={22} color="#002966" />
-										</div>
-										<h5 className="db-div-head">Approval Ratio</h5>
+									<div className="stacked-bar-chart stacked-line-chart">
+										{" "}
+										<StackedBarChart fromDate={fromDate} toDate={toDate} />
 									</div>
-									<Icon
-										name="right_diagonal_up_arrow"
-										width={22}
-										height={22}
-										color="#0066ff"
-										className="icon-cursor"
-									/>
 								</div>
-								<div className="stacked-bar-chart stacked-line-chart">
-									{" "}
-									<LineChart />
+
+								<div className="approvals-div">
+									<div className="today-stats-head">
+										<div className="no-hover-icon-head">
+											<div className="no-hover-icon">
+												<Icon name="sales" width={22} height={22} color="#002966" />
+											</div>
+											<h5 className="db-div-head">Approval Ratio</h5>
+										</div>
+										<Icon
+											name="right_diagonal_up_arrow"
+											width={22}
+											height={22}
+											color="#0066ff"
+											className="icon-cursor"
+										/>
+									</div>
+									<div className="stacked-bar-chart stacked-line-chart">
+										{" "}
+										<LineChart />
+									</div>
 								</div>
 							</div>
-						</div>
 
-						{/* <div className="db-details-country">
+							{/* <div className="db-details-country">
 							<div className="country-div">
 								<div className="today-stats-head">
 									<div className="no-hover-icon-head">
@@ -459,65 +517,43 @@ function Dashboard() {
 							</div>
 							<div className="details-show-more-div"></div>
 						</div>  */}
-					</div>
-
-					{/* Table showing latest transactions */}
-					<div className={role === "client" ? "db-table-disable" : "db-table"}>
-						<Table
-							headerLabels={headerLabels}
-							tableData={searchedResult}
-							transactionTotal={transactionTotal}
-							currentPage={currentPage}
-							rowsPerPage={rowsPerPage}
-							setCurrentPage={setCurrentPage}
-							handleChildAction={handleChildAction}
-						/>
-					</div>
-
-					<div className="footer-text-column">
-						<div className="footer-text">
-							<span data-title="P">P</span>
-							<span data-title="r">r</span>
-							<span data-title="o">o</span>
-							<span data-title="c">c</span>
-							<span data-title="e">e</span>
-							<span data-title="s">s</span>
-							<span data-title="s">s</span>
-							<span data-title="&#x25A0;" className="square" style={{ fontSize: '50px' }}>&#x25A0;</span>
-							<span></span>
 						</div>
-						<div className="footer-text-inline">
-							<div className="footer-text">
-								<span data-title="T">T</span>
-								<span data-title="r">r</span>
-								<span data-title="a">a</span>
-								<span data-title="c">c</span>
-								<span data-title="k">k</span>
-								<span data-title="&#x25A0;" className="square" style={{ fontSize: '50px' }}>&#x25A0;</span>
-							</div>
 
-							<div className="footer-text">
-
-								<span data-title="G">G</span>
-								<span data-title="r">r</span>
-								<span data-title="o">o</span>
-								<span data-title="w">w</span>
-								<span data-title="&#x25A0;" className="square" style={{ fontSize: '50px' }}>&#x25A0;</span>
-							</div>
+						{/* Table showing latest transactions */}
+						<div className={role === "client" ? "db-table-disable" : "db-table"}>
+							<Table
+								headerLabels={headerLabels}
+								tableData={searchedResult}
+								transactionTotal={transactionTotal}
+								currentPage={currentPage}
+								rowsPerPage={rowsPerPage}
+								setCurrentPage={setCurrentPage}
+								handleChildAction={handleChildAction}
+							/>
 						</div>
-						<img src={footerimage} alt="footer-img" />
 
-						<p className="footer-tag-line"> ©{currentYear} Axipays. All rights reserved. </p>
+						{footerContent}
+
 					</div>
-				</div>
-			)}
+				)}
 			</>
 		);
 	}
 	if (role === "employee") {
 		return (
 			<>
-				<div>Hello {userName}</div>
+				<Header />
+				<Sidebar />
+				<div className="main-screen dashboard">
+					<Heading heading={headings.dashboard} />
+					<div className="db-glance">
+							<div className="db-glance-top">
+								<h3>Welcome,&nbsp; {userName}</h3>
+								<p>Today's latest updates await you,</p>
+							</div>
+						</div>
+						{footerContent}
+				</div>
 			</>
 		);
 	}
@@ -571,41 +607,7 @@ function Dashboard() {
 
 						</div>
 					</div>
-					<div className="footer-text-column">
-						<div className="footer-text">
-							<span data-title="P">P</span>
-							<span data-title="r">r</span>
-							<span data-title="o">o</span>
-							<span data-title="c">c</span>
-							<span data-title="e">e</span>
-							<span data-title="s">s</span>
-							<span data-title="s">s</span>
-							<span data-title="&#x25A0;" className="square" style={{ fontSize: '50px' }}>&#x25A0;</span>
-							<span></span>
-						</div>
-						<div className="footer-text-inline">
-							<div className="footer-text">
-								<span data-title="T">T</span>
-								<span data-title="r">r</span>
-								<span data-title="a">a</span>
-								<span data-title="c">c</span>
-								<span data-title="k">k</span>
-								<span data-title="&#x25A0;" className="square" style={{ fontSize: '50px' }}>&#x25A0;</span>
-							</div>
-
-							<div className="footer-text">
-
-								<span data-title="G">G</span>
-								<span data-title="r">r</span>
-								<span data-title="o">o</span>
-								<span data-title="w">w</span>
-								<span data-title="&#x25A0;" className="square" style={{ fontSize: '50px' }}>&#x25A0;</span>
-							</div>
-						</div>
-						<img src={footerimage} alt="footer-img" />
-
-						<p className="footer-tag-line"> ©{currentYear} Axipays. All rights reserved. </p>
-					</div>
+					{footerContent}
 				</div>
 			</>
 		);

@@ -13,7 +13,7 @@ const BASE_URL = 'https://api.axipays.com/';
 // Secure headers for all requests
 const getHeaders = () => ({
     'Content-Type': 'application/json',
-    'Authorization': `${localStorage.getItem('authToken')}`,  // Example of using stored token for auth
+    'Authorization': `${sessionStorage.getItem('authToken')}`,  // Example of using stored token for auth
 });
 
 // Validate parameters

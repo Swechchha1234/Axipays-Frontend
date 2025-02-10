@@ -10,18 +10,18 @@ const BASE_URL = 'https://api.axipays.com/api/v1/';
 
 const getHeaders = () => ({
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+    Authorization: `Bearer ${sessionStorage.getItem('authToken')}`,
 });
 
 const handleError = (error) => {
     if (error.response) {
-        // console.error('Error Response:', error.response.data);
+        console.error('Error Response:', error.response.data);
         throw new Error(error.response.data.message || 'Server error occurred');
     } else if (error.request) {
-        // console.error('No Response:', error.request);
+        console.error('No Response:', error.request);
         throw new Error('No response from server');
     } else {
-        // console.error('Error:', error.message);
+        console.error('Error:', error.message);
         throw new Error(error.message);
     }
 };
@@ -59,10 +59,10 @@ const apiRequest = async (path, method = 'POST', body = null) => {
 // Decode JWT token and store the extracted details
     function decodeToken(token) 
     {
-        // console.log(token)
+        console.log(token)
         // Check if token is a non-empty string
         if (typeof token !== 'string' || !token.trim()) {
-            // console.error("Token is not a valid string");
+            console.error("Token is not a valid string");
             return null;
         }
 
@@ -74,7 +74,7 @@ const apiRequest = async (path, method = 'POST', body = null) => {
                     // console.warn(`Field "${field}" is missing in the decoded token`);
                 }
             });
-            // console.log(decoded)
+            console.log(decoded)
             return decoded;
         } catch (error) {
             // console.error("Invalid token", error);
@@ -88,18 +88,18 @@ export const login = async (email, password) => {
         const response = await apiRequest('auth/login', 'POST', { email, password });
 
         const loginData = response.data;
-        // localStorage.clear();
+        // sessionStorage.clear();
 
         const decoded = decodeToken(loginData);
-        // console.log(response)
+        console.log(response)
         if (decoded) {
-            localStorage.setItem('userName', decoded.username);
-            localStorage.setItem('userId', decoded.userId);
-            localStorage.setItem('role', decoded.role);
-            localStorage.setItem('behavior', decoded.behavior);
-            localStorage.setItem('email', decoded.email);
-            localStorage.setItem('clientId', decoded.clientId);
-            localStorage.setItem('authToken', loginData);
+            sessionStorage.setItem('userName', decoded.username);
+            sessionStorage.setItem('userId', decoded.userId);
+            sessionStorage.setItem('role', decoded.role);
+            sessionStorage.setItem('behavior', decoded.behavior);
+            sessionStorage.setItem('email', decoded.email);
+            sessionStorage.setItem('clientId', decoded.clientId);
+            sessionStorage.setItem('authToken', loginData);
         }
     } catch (error) {
         throw error;

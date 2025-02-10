@@ -7,9 +7,9 @@ import AxipaysLogo from '../media/image/axipays_logo.png';
 import BoyAvtar from '../media/image/profileimage.jpg';
 
 function Header() {
-    const userName = localStorage.getItem("userName");
-    const email = localStorage.getItem("email");
-    const userRole = localStorage.getItem("role");
+    const userName = sessionStorage.getItem("userName");
+    const email = sessionStorage.getItem("email");
+    const userRole = sessionStorage.getItem("role");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalType, setModalType] = useState("");
     const [isFlip, setFlip] = useState(false);
