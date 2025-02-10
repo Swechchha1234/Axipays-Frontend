@@ -80,7 +80,7 @@ const ForgetPasswordModal = ({
 
     const handleOtpSubmit = () => {
         const enteredOtp = otp.join("");  
-        const storedOtp = localStorage.getItem("generatedOtp");  
+        const storedOtp = sessionStorage.getItem("generatedOtp");  
     
         if (enteredOtp === storedOtp) {
             setStep(3);  

@@ -77,6 +77,7 @@ function App() {
 					<Route path="/refundandchargebacks" element={<RefundAndChargebacks />} />
 
 					<Route path="/calendar" element={<Calendar />} />
+
 					<Route path="/mailtemplate" element={<MailTemplate/>}/>
 
 					<Route path="*" element={<NotFound />} />
