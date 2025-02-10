@@ -4,6 +4,7 @@ import Icon from "../../media/icon/icons";
 
 export const headings = {
     dashboard: "Dashboard",
+    mail:"Email Templates",
     mmerchant:"Manage Merchant",
     msettlement:"Manage Settlement",
     muser:"Manage User",

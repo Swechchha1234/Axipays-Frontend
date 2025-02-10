@@ -5,8 +5,8 @@ import Icon from "../media/icon/icons.jsx";
 import AxipaysFull_log from '../media/image/axipays-full-logo.webp';
 
 function Sidebar() {
-    const role = localStorage.getItem('role');
-    const clientId = localStorage.getItem('clientId');
+    const role = sessionStorage.getItem('role');
+    const clientId = sessionStorage.getItem('clientId');
     const location = useLocation();
     const [activeItem, setActiveItem] = useState("");
     const [openSubmenus, setOpenSubmenus] = useState({}); 
@@ -32,7 +32,11 @@ function Sidebar() {
             return null;
         };
 
-        const SidebarContent = role === "admin" ? sidebarItems.admin : sidebarItems.merchant;
+        const SidebarContent = 
+  role === "admin" ? sidebarItems.admin : 
+  role === "merchant" ? sidebarItems.merchant : 
+  role === "employee" ? sidebarItems.employee : [];
+
         const active = findActiveItem(SidebarContent);
         if (active) setActiveItem(active);
     }, [location, role]);
@@ -129,6 +133,18 @@ function Sidebar() {
                     { name: "API Doc", icon: "master_settings", link: "https://developers.axipays.com/" },
                 ]
             }
+        ],
+        employee: [
+            {
+                section: "Dashboard",
+                items: [{ name: "Overview", icon: "overview", link: "/home" }]
+            },
+            {
+                section: "Promotional Emailing",
+                items: [
+                    { name: "Email", icon: "person_book",  link: "/mailtemplate" },
+                ]
+            },
         ]
     };
 
@@ -193,7 +209,7 @@ function Sidebar() {
             </div>
         ));
 
-    const SidebarContent = role === "admin" ? sidebarItems.admin : role === "client" ? sidebarItems.merchant : [];
+    const SidebarContent = role === "admin" ? sidebarItems.admin : role === "client" ? sidebarItems.merchant : role === "employee"? sidebarItems.employee : [];
 
     return (
         <div className="sidebar">

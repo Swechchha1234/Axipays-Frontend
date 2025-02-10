@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Icon from "../media/icon/icons";
 import Heading, { headings } from "../components/utilitis/Heading.jsx";
+import { Input } from "../components/utilitis/Input.jsx";
 import Skeleton from "../components/Skeleton.jsx";
 
 import UserProfile from "../media/image/UserProfile.png";
@@ -18,11 +19,11 @@ import VolumeGraph from "../components/Charts/VolumeGrapgh.jsx";
 
 function ViewMerchant() {
     const currentYear = new Date().getFullYear();
-    const role = localStorage.getItem("role");
+    const role = sessionStorage.getItem("role");
     const [activeTab, setActiveTab] = useState("Business Details");
     const [merchant, setMerchant] = useState(null);
     const [, setErrorMessage] = useState("");
-    // const [apiKeyVisible, setApiKeyVisible] = useState(false);
+    const [webhookUrl, setWebhookUrl] = useState("");
     const { userId } = useParams();
     const [loading, setLoading] = useState(true);
     const [copiedIndex, setCopiedIndex] = useState(null);
@@ -125,6 +126,17 @@ function ViewMerchant() {
     };
 
     const handleInputChange = (section, id, value) => {
+        if (!editableFields[section]) {
+            if (section === 'webhookurl') {
+                setWebhookUrl(value);
+                setChangedFields((prev) => ({
+                    ...prev,
+                    webhookurl: value,
+                }));
+            }
+            return;
+        }
+
         const updatedFields = { ...editableFields };
         const fieldIndex = updatedFields[section].findIndex((field) => field.id === id);
         if (fieldIndex > -1) {
@@ -145,6 +157,7 @@ function ViewMerchant() {
                 const response = await apiRequest(apiEndpoint, "GET");
                 if (response && response.data) {
                     setMerchant(response.data);
+                    setWebhookUrl(response.data.webhook_url);
                     setStatus(response.data.status);
                     populateEditableFields(response.data);
                     setErrorMessage("");
@@ -189,14 +202,11 @@ function ViewMerchant() {
 
     const handleUpdate = async () => {
         if (Object.keys(changedFields).length === 0) {
-            // console.log("No fields have been changed.");
             setIsEditable(false);
             return;
         }
-    
+
         try {
-            // console.log("Starting handleUpdate with changedFields:", changedFields);
-    
             const formattedFields = { ...changedFields };
             const arrayFields = [
                 "currencies",
@@ -205,18 +215,16 @@ function ViewMerchant() {
                 "primary_client",
                 "traffic_type",
             ];
-    
+
             arrayFields.forEach((field) => {
                 if (formattedFields[field] && !Array.isArray(formattedFields[field])) {
-                    // console.log(`Converting field ${field} to an array:`, formattedFields[field]);
                     formattedFields[field] = [formattedFields[field]];
                 }
             });
-    
+
             if (formattedFields["card_type"]) {
                 const cardTypeValue = formattedFields["card_type"];
-                // console.log("Processing card_type value:", cardTypeValue);
-    
+
                 formattedFields["processing_cards"] =
                     typeof cardTypeValue === "string"
                         ? cardTypeValue.split(/\s+/).map((card) => card.trim())
@@ -225,33 +233,29 @@ function ViewMerchant() {
                                 typeof item === "string" ? item.split(/\s+/).map((card) => card.trim()) : item
                             )
                             : [];
-    
-                // console.log("Formatted processing_cards:", formattedFields["processing_cards"]);
+
                 delete formattedFields["card_type"];
             }
-    
+
+            if (changedFields.webhookurl) {
+                formattedFields.webhook_url = changedFields.webhookurl;
+                delete formattedFields.webhookurl; 
+            }
+            console.log("formate field",formattedFields);
             const apiEndpoint = `api/v1/client?clientId=${userId}`;
-            // console.log("API Endpoint:", apiEndpoint);
-            // console.log("Formatted fields for update:", formattedFields);
-    
             const response = await apiRequest(apiEndpoint, "PATCH", formattedFields);
-            // console.log("API Response:", response);
-    
+
             if (response && response.success) {
-                // console.log("Update successful. Clearing changedFields and setting editable to false.");
                 setChangedFields({});
                 setIsEditable(false);
             } else {
-                // console.error("API responded with an error or no success:", response);
             }
         } catch (error) {
-            // console.error("Error updating merchant data:", error);
         } finally {
-            // console.log("Resetting isEditable to false.");
             setIsEditable(false);
         }
     };
-    
+
 
     const handleStatusToggle = async () => {
         const newStatus = status === "Active" ? "Inactive" : "Active";
@@ -443,9 +447,6 @@ function ViewMerchant() {
                                         <div className="vm-tabs">
                                             <div className="rates-tab-head">
                                                 <p>Current Prices</p>
-                                                {/* <Button backgroundcolor="#003366" size="small" onClick={toggleApiKeyVisibility}>
-                                                    {apiKeyVisible ? "Hide Key" : "Generate Key"}
-                                                </Button> */}
                                             </div>
                                             <div className="keys">
                                                 {[
@@ -471,10 +472,6 @@ function ViewMerchant() {
                                                             </div>
 
                                                             <p>
-                                                                {/* {merchant[key.keyName]?.slice(0, 4)}{"*".repeat(
-                                                                    (merchant[key.keyName]?.length || 8) - 8
-                                                                )}{merchant[key.keyName]?.slice(-4)} */}
-
                                                                 {merchant[key.keyName]?.slice(0, 5)}
                                                                 {"*".repeat(14)}
                                                                 {merchant[key.keyName]?.slice(-5)}
@@ -483,7 +480,18 @@ function ViewMerchant() {
                                                         </div>
                                                     </div>
                                                 ))}
+                                                
                                             </div>
+                                            <div className="webhook-field">
+                                                    <input
+                                                        className="webhookurl"
+                                                        id="webhookurl"
+                                                        type="text"
+                                                        value={webhookUrl}
+                                                        onChange={(e) => handleInputChange('webhookurl', 'webhookurl', e.target.value)}
+                                                    />
+                                                    <Button onClick={handleUpdate}>Webhook URL</Button>
+                                                </div>
                                         </div>
                                     )}
                                     {activeTab === "MIDs" && (

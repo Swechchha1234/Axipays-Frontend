@@ -32,7 +32,7 @@ export const Input = ({
       <div className={`id-input-div ${className}`}>
         {!hideLabel && (
           <label
-            className={`lid-labe ${value ? "filled-id-label" : ""} ${labelClass}`}
+            className={`id-label ${value ? "filled-id-label" : ""} ${labelClass}`}
             htmlFor={id}
           >
             {label}

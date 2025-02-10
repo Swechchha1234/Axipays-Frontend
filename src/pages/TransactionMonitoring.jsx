@@ -21,7 +21,7 @@ import Loader from "../components/utilitis/Loader";
 import Heading, { headings } from "../components/utilitis/Heading.jsx";
 
 const TransactionMonitoring = () => {
-	const role = localStorage.getItem("role");
+	const role = sessionStorage.getItem("role");
 	const currentYear = new Date().getFullYear();
 	const [clientId, setClientId] = useState(null);
 	const fetchDistinctValuesEndpoint =
@@ -294,7 +294,7 @@ const TransactionMonitoring = () => {
 	}, [currentPage, rowsPerPage]);
 
 	useEffect(() => {
-		const storedClientId = localStorage.getItem("clientId");
+		const storedClientId = sessionStorage.getItem("clientId");
 		if (storedClientId) {
 			setClientId(storedClientId);
 		} else {
@@ -465,7 +465,7 @@ const TransactionMonitoring = () => {
 			name: "",
 			email: ""
 		});
-		// localStorage.removeItem("clientId");
+		// sessionStorage.removeItem("clientId");
 		setOverallTotal(0);
 		setCurrentPage(1);
 		setSearchedResult(null);

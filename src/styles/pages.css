@@ -740,16 +740,16 @@ p {
 
 /*------------------------- Manage Merchant------------------------------*/
 
-.mm-details{
+.mm-details {
     position: relative !important;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.mm-details .sapration-line{
+.mm-details .sapration-line {
     position: relative !important;
-   padding: 0.5px;
+    padding: 0.5px;
 }
 
 .settlement-first-row {
@@ -777,31 +777,31 @@ p {
     border-radius: 10px;
 }
 
-.mm-card{
+.mm-card {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.mm-card-container{
+.mm-card-container {
     justify-content: space-between;
 }
 
-.mm-counts{
+.mm-counts {
     display: flex;
     align-items: center;
     gap: 10px;
     color: #373737;
 }
 
-.mm-card-status{
+.mm-card-status {
     padding: 3px 20px;
-    border-radius: 10px; 
+    border-radius: 10px;
     margin-top: 10px;
     cursor: pointer;
 }
 
-.mm-active-card{
+.mm-active-card {
     border: 1px solid #F2F2F2;
     background-color: #FAFAFA;
     padding: 3px 20px;
@@ -832,7 +832,7 @@ p {
     transition: all 0.5s ease-in;
 }
 
-.mm-active-status{
+.mm-active-status {
     padding: 2px 12px;
     font-size: 12px;
     background-color: #D6EBFF;
@@ -899,16 +899,17 @@ p {
 
 
 /* / ------------------------ View Merchant ------------------------ / */
-.loading-data{
+.loading-data {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 40px;
-    position: fixed; 
+    position: fixed;
     top: 50%;
-    left: 50%; 
+    left: 50%;
     transform: translate(-50%, -50%);
 }
+
 .viewmerchant-row1 {
     display: flex;
     flex-direction: row;
@@ -933,7 +934,7 @@ p {
 }
 
 .profile-image {
-   width: 25%;
+    width: 25%;
 }
 
 .merchant-intro {
@@ -963,7 +964,7 @@ p {
     margin: 20px 0;
 }
 
-.vm-root{
+.vm-root {
     display: flex;
     align-items: center;
     white-space: nowrap;
@@ -971,14 +972,14 @@ p {
     gap: 10px;
 }
 
-.checkbox{
+.checkbox {
     width: 20px;
     height: 20px;
     border: 1px solid #8E8E8E;
     border-radius: 5px;
 }
 
-.vm-btn{
+.vm-btn {
     width: 40%;
 }
 
@@ -992,7 +993,7 @@ p {
     flex-direction: column;
 }
 
-.profile-info div{
+.profile-info div {
     margin: -2px 0;
 }
 
@@ -1067,7 +1068,7 @@ p {
     color: #005CB8;
 }
 
-.viewmerchant-row2{
+.viewmerchant-row2 {
     display: flex;
     flex-direction: column;
     width: 63%;
@@ -1115,7 +1116,7 @@ p {
     padding: 20px;
 }
 
-.vm-tabs{
+.vm-tabs {
     height: 100%;
 }
 
@@ -1136,7 +1137,8 @@ p {
     text-align: left;
 }
 
-.business-details-right-p,.business-info-p {
+.business-details-right-p,
+.business-info-p {
     color: #A2A2A2;
     margin-bottom: -3px;
 }
@@ -1169,7 +1171,7 @@ p {
     padding: 0.5px;
 }
 
-.business-info-left p{
+.business-info-left p {
     color: #00264c;
     font-weight: 500;
 }
@@ -1186,43 +1188,54 @@ p {
     overflow-y: auto;
 }
 
-.rate-table{
+.rate-table {
     max-height: 230px;
     overflow-y: auto;
 }
 
-.vm-tab-head{
+.vm-tab-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.vm-edit-icon{
+.vm-edit-icon {
     margin-top: -15px;
     cursor: pointer;
 }
 
 .rates-tab-head {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.webhook-field{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: baseline;
+}
+
+.webhookurl{
+    width: 100%;
 }
 
 .rates-tab-head p {
     font-size: 18px;
     font-weight: 700;
-    text-align: left;
     color: #00264C;
 }
 
-.vm-rate-table{
-    overflow-y:scroll ;
+.vm-rate-table {
+    overflow-y: scroll;
     height: 70%;
 }
 
 .generate-key {
-   width: 100%;
-   background-color: #00264c;
+    width: 100%;
+    background-color: #00264c;
     justify-content: center;
 }
 
@@ -1304,7 +1317,7 @@ p {
 }
 
 .mid1 {
-    width:100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1333,7 +1346,7 @@ p {
     margin: 0 auto;
 }
 
-.vm-chart{
+.vm-chart {
     position: relative;
     height: 125px;
     border-radius: 20px;
@@ -2560,7 +2573,7 @@ p {
     justify-content: center;
     height: 50px;
     margin-top: -50px;
-    width: 40%;
+    width: 32%;
     float: right;
     border-radius: 10px;
     box-shadow: 0px 1px 4px 0px rgba(25, 33, 61, 0.08);
@@ -2823,7 +2836,6 @@ p {
     align-items: center;
     justify-content: end;
     margin-top: 20px;
-    margin-bottom: -20px;
 }
 
 .managemid-modal-selects {
@@ -3312,6 +3324,12 @@ p {
     padding: -100px;
 }
 
+.merchant-card-left{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 
 /* ------------------Merchant Dashboard------------- */
 .demo-logo {
@@ -3675,17 +3693,17 @@ p {
 
 /* -------------Manage merchat Horizontal line graph----------- */
 
-.mm-Ratio-wrapper{
+.mm-Ratio-wrapper {
     width: 70%;
 }
 
 .status-circle {
-    width: 10px;      
-    height: 10px;    
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     display: inline-block;
     background-color: #D6EBFF;
-  }
+}
 
 .Ratio-wrapper {
     display: flex;
@@ -3694,38 +3712,38 @@ p {
     background-color: #D6EBFF;
     border-radius: 50px;
     overflow: hidden;
-  }
-  
-  .Ratio-wrapper-bar {
+}
+
+.Ratio-wrapper-bar {
     height: 100%;
     text-align: center;
     color: white;
     font-size: 12px;
     font-weight: bold;
     padding: 0 5px;
-  }
-  
-  .total-bar {
+}
+
+.total-bar {
     background-color: #007BFF;
-  }
-  
-  .mm-active {
+}
+
+.mm-active {
     background-color: #0066FF;
-  }
-  
-  .mm-inactive {
+}
+
+.mm-inactive {
     background-color: #FF9999;
-  }
-  
-  .mm-pending {
+}
+
+.mm-pending {
     background-color: #FFEEBB;
-  }
-  
-  .mm-temp {
+}
+
+.mm-temp {
     background-color: #B7B7B7;
-  }
-  
-  .edit-input-field{
+}
+
+.edit-input-field {
     border: none;
     outline: none;
     border-bottom: 1px solid #A2A2A2;
@@ -3734,4 +3752,526 @@ p {
     margin-top: 10px;
     font-size: 14px;
     color: #A2A2A2;
-  }
+}
+
+/* -------------Email--------------- */
+
+.container-for-email {
+    padding-top: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+}
+
+.email-section {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.email-container::-webkit-scrollbar {
+    display: none;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 40%;
+    max-height: 300px;
+    margin-right: 10px;
+}
+
+.input-section .em-input {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.input-section input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.input-section input:focus {
+    border-color: #007bff;
+}
+
+.input-section button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.edit-box {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    padding: 20px;
+    text-align: left;
+    background-color: #fff;
+}
+
+.edit-box input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #888;
+    outline: none;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.edit-box div{
+    display: flex;
+    align-items: center;
+}
+
+.edit-box button {
+    margin-right: 5px;
+    padding: 5px 10px;
+}
+
+.delete-btn {
+    background-color: #ede8e8;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 9999;
+}
+
+.input-section button:focus {
+    outline: none;
+}
+
+.input-section button:active {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.email-container {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+}
+
+.em-header {
+    background-image: url("https://idox9w5.sufydely.com/rectangle.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.header-content {
+    text-align: left;
+    margin: 40px;
+    color: #ffffff;
+}
+
+.header-content h1 {
+    font-size: 2rem;
+}
+
+.experience-head {
+    text-align: center;
+    padding: 25px;
+    color: #00264C;
+    display: grid;
+    justify-content: center;
+}
+
+.experience-head .tag-line {
+    background-color: #00264C;
+    padding: 10px;
+    color: #f1f1f1;
+    margin: 3px auto;
+    width: fit-content;
+}
+
+.feature-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    position: relative;
+}
+
+.left-section {
+    flex: 1 1 200px;
+    padding: 20px;
+    background-image: url("https://idox9w5.sufydely.com/payment-processes.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px 0 0 10px;
+    text-align: left;
+    display: grid;
+    justify-content: space-between;
+}
+
+.left-section h1{
+    visibility: hidden; 
+    user-select: none;
+}
+
+.left-section .subline {
+    font-size: 24px;
+    font-weight: 600;
+    visibility: hidden; 
+    user-select: none;
+}
+
+.left-section .subline2 {
+    font-size: 24px;
+    visibility: hidden; 
+    user-select: none;
+}
+
+.right-section {
+    flex: 2 1 300px;
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+}
+
+.right-section .step {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #888;
+    padding: 15px 0;
+    justify-content: space-between;
+}
+
+.step h1 {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.step h2 {
+    font-size: 16px;
+    flex-shrink: 0;
+    width: 35%;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 15ch;
+    margin-right: 8px;
+}
+
+.step p {
+    font-size: 14px;
+    color: #E5E5E5;
+    flex-grow: 1;
+}
+
+.platform-section {
+    text-align: left;
+    padding: 20px;
+}
+
+.platform-section ul {
+    margin: 10px 0;
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.platform-section li {
+    margin: 10px 0;
+}
+
+.payment-partner-section {
+    position: relative;
+}
+
+.payment-partner {
+    background-image: url("https://idox9w5.sufydely.com/image.png");
+    background-size: contain;
+    background-color: #000;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 90px;
+}
+
+.payment-partner div {
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+}
+
+.label {
+    text-align: center;
+    margin: 20px;
+}
+
+.label p,
+.footer-line {
+    color: #888;
+}
+
+.contacts {
+    margin-top: 5px;
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.contacts a {
+    color: #01172E;
+    text-decoration: none;
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    position: relative;
+}
+
+.footer a {
+    color: #002966;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer p {
+    margin: 10px 0;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.ptag{
+    color: #888;
+    font-size: 12px;
+    margin: -2px 0;
+}
+
+@media (max-width: 768px) {
+    .container-for-email {
+        display: grid;
+        width: 100%;
+        height: auto;
+    }
+
+    .input-section {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .email-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .referral-header {
+        padding: 10px !important;
+    }
+
+    .referral-header .header-content {
+        display: grid;
+        justify-content: center;
+    }
+
+    .header-content h1,
+    .experience-section h2,
+    .feature h3,
+    .payment-partner h1,.referral-header .header-content h1  {
+        font-size: 1.5rem !important;
+    }
+
+    .feature-container {
+        display: grid;
+    }
+
+    .left-section {
+        text-align: center;
+        justify-content: center;
+        flex: 1 1 400px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .step h1 {
+        font-size: 14px;
+    }
+
+    .step h2 {
+        font-size: 14px;
+    }
+
+    .payment-partner{
+        padding: 20px;
+    }
+
+    .payment-partner-for-referral {
+        padding: 10px !important;
+    }
+
+    .feature p,
+    .payment-partner p, .payment-partner-for-referral p {
+        font-size: 0.7rem;
+    }
+
+    .left-section-for-referral{
+        text-align: center !important;
+        justify-content: center !important;
+     }
+ 
+    .left-section-for-referral .subline {
+       font-size: 20px;
+       margin-top: 0;
+     }
+ 
+     .left-section-for-referral.subline2 {
+       font-size: 16px;
+       margin-top: 0;
+     }
+}
+
+@media (min-width: 769px) {
+
+    .payment-partner h1 {
+        font-size: 1.5rem;
+    }
+
+    .payment-partner {
+        padding: 50px;
+    }
+}
+
+/* --------------Referral--------- */
+
+.referral-header {
+    background-image: url("https://idox9w5.sufydely.com/referalaxipays.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+}
+
+.referral-header .header-content {
+    text-align: center;
+}
+
+.referral-header .header-content h1 {
+    font-size: 2.5rem;
+}
+
+.tag-line-for-referral {
+    background-image: url("https://idox9w5.sufydely.com/lineimage.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10px;
+    color: #f1f1f1;
+    width: fit-content;
+    margin: 3px auto;
+}
+
+.left-section-for-referral {
+    flex: 1 1 100px;
+    padding: 20px;
+    background-image: url("https://idox9w5.sufydely.com/referalfeature.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: left;
+    border-radius: 10px;
+    display: grid;
+    justify-content: space-between;
+}
+
+.left-section-for-referral .subline {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.left-section-for-referral .subline2 {
+    font-size: 24px;
+}
+
+.highlight {
+    color: #ff3b3b;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.payment-partner-for-referral {
+    background-image: url("https://idox9w5.sufydely.com/referalimg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.payment-partner-for-referral div {
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+}
+
+/* -----------Mailtemplate--------- */
+
+.em-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.em-tabs{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: 10px;
+    background-color: #f0f0f0b9;
+    padding: 10px;
+    border-radius: 10px;
+}

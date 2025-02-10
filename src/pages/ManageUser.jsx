@@ -14,7 +14,7 @@ import { apiRequest } from "../services/apiService.jsx";
 
 function ManageUser() {
     const currentYear = new Date().getFullYear();
-    const role = localStorage.getItem("role");
+    const role = sessionStorage.getItem("role");
     const [filterStatus, setFilterStatus] = useState("all");
     const [activeCard, setActiveCard] = useState("all");
    const [loading, setLoading] = useState(true);

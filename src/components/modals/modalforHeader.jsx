@@ -13,9 +13,9 @@ const initialNotifications = [
 ];
 
 const ModalHeader = ({ isOpen, onClose, modalType, searchQuery }) => {
-    const userName = localStorage.getItem("userName");
-    const email = localStorage.getItem("email");
-    const userRole = localStorage.getItem("role");
+    const userName = sessionStorage.getItem("userName");
+    const email = sessionStorage.getItem("email");
+    const userRole = sessionStorage.getItem("role");
     const [notifications, setNotifications] = useState(initialNotifications);
 
     const getTitle = () => {
@@ -44,7 +44,7 @@ const ModalHeader = ({ isOpen, onClose, modalType, searchQuery }) => {
     };
 
     const Signout = () => {
-        localStorage.clear();
+        sessionStorage.clear();
         window.location.href = "/";
     };
 

@@ -23,10 +23,10 @@ import MIDManagment from "./pages/MIDManagment.jsx";
 
 import AddAcquirer from "./pages/AddAcquirer.jsx";
 import PaymentDetails from "./pages/PaymentForm.jsx";
-import ButtonAnimation from "./components/Animation/animationfile.jsx";
 import ManageSettlement from "./pages/ManageSettlement.jsx";
 import RefundAndChargebacks from "./pages/Refund&Chargebacks.jsx";
 import Calendar from "./components/utilitis/Calender.jsx";
+import MailTemplate from "./pages/MailTemplate.jsx";
 
 // lazy loading
 // const Website = React.lazy(() => import("./pages/website/Landing.jsx"));
@@ -77,6 +77,7 @@ function App() {
 					<Route path="/refundandchargebacks" element={<RefundAndChargebacks />} />
 
 					<Route path="/calendar" element={<Calendar />} />
+					<Route path="/mailtemplate" element={<MailTemplate/>}/>
 
 					<Route path="*" element={<NotFound />} />
 				</Routes>
