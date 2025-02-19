@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Icon from "../media/icon/icons";
 import Heading, { headings } from "../components/utilitis/Heading.jsx";
-import { Input } from "../components/utilitis/Input.jsx";
 import Skeleton from "../components/Skeleton.jsx";
 
 import UserProfile from "../media/image/UserProfile.png";
@@ -20,6 +19,7 @@ import VolumeGraph from "../components/Charts/VolumeGrapgh.jsx";
 function ViewMerchant() {
     const currentYear = new Date().getFullYear();
     const role = sessionStorage.getItem("role");
+    const userName = sessionStorage.getItem("userName");
     const [activeTab, setActiveTab] = useState("Business Details");
     const [merchant, setMerchant] = useState(null);
     const [, setErrorMessage] = useState("");
@@ -291,7 +291,13 @@ function ViewMerchant() {
 
                             <div className="merchant-intro">
                                 <div className="profile-image" >
-                                    <img src={UserProfile} alt="ProfilePicture" />
+                                {role === "admin" ? (
+                                <img src={UserProfile} alt="avatar" />
+                            ) : (
+                                <div className="profile-image-for-others">
+                                    {userName ? userName.charAt(0).toUpperCase() : "U"}
+                                </div>
+                            )}
                                 </div>
                                 <div className="merchant-status-name">
                                     <p className="company-name">{merchant?.client_name}</p>

@@ -44,8 +44,8 @@ function ManageMerchant() {
 			const tempUsersData = tempUsersResponse?.data.map(user => ({
 				...user,
 				website_url: user.company_url || "",
+				client_name: user.company_name || "", 
 			})) || [];
-
 			const allMerchants = [...clientData, ...tempUsersData];
 
 			setMerchants(allMerchants);

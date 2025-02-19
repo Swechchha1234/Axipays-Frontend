@@ -11,7 +11,7 @@ export const headings = {
     mmid:"Manage Mid",
     crefund:"Create Refund",
     transaction: "Transaction Monitoring",
-    vmerchant:"View Merchant",
+    vmerchant:"View Profile",
     vuser:"View User"
 };
 

@@ -76,7 +76,13 @@ const ModalHeader = ({ isOpen, onClose, modalType, searchQuery }) => {
                     <div className="profile-top-head">
                         <div className="profile-info-div">
                             <div className="profile-avatar">
-                                <img src={BoyAvtar} alt="" />
+                            {userRole === "admin" ? (
+                                <img src={BoyAvtar} alt="avatar" />
+                            ) : (
+                                <div>
+                                    {userName ? userName.charAt(0).toUpperCase() : "U"}
+                                </div>
+                            )}
                             </div>
                             <div className="profile-details">
                                 <h4>{userName}</h4>
