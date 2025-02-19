@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import Icon from "../media/icon/icons.jsx";
 import Modal from '../components/modals/modalforHeader.jsx';
 import '../styles/component.css';
@@ -121,7 +121,13 @@ function Header() {
                     </div>
                     <div className='profileSection' onClick={() => openModal('Profile')}>
                         <div className='img-section'>
-                            <img src={BoyAvtar} alt="" />
+                            {userRole === "admin" ? (
+                                <img src={BoyAvtar} alt="avatar" />
+                            ) : (
+                                <div>
+                                    {userName ? userName.charAt(0).toUpperCase() : "U"}
+                                </div>
+                            )}
                         </div>
                         <div className='details-section'>
                             <p className='userName'>{userName}</p>

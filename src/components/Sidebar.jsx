@@ -89,7 +89,7 @@ function Sidebar() {
             {
                 section: "Others",
                 items: [
-                    { name: "AQ Test", icon: "apps", link: "https://payopay.online/" },
+                    { name: "AQ Test", icon: "apps", link: "/paymentform" },
                     { name: "API Doc", icon: "master_settings", link: "https://developers.axipays.com/" },
                     { name: "Master Setting", icon: "master_settings", link: "/home", disabled: true }
                 ]
@@ -129,7 +129,7 @@ function Sidebar() {
             {
                 section: "Others",
                 items: [
-                    { name: "AQ Test", icon: "apps",link: "https://payopay.online/", disabled: true },
+                    { name: "AQ Test", icon: "apps",link: "/paymentform"},
                     { name: "API Doc", icon: "master_settings", link: "https://developers.axipays.com/" },
                 ]
             }

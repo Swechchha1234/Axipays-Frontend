@@ -67,7 +67,8 @@ const TransactionTable = ({ headerLabels = [], tableData = [], onViewClick, isCo
         setActiveOptionRow(false)
     }
 
-    const totalPages = Math.ceil(transactionTotal / rowsPerPage);
+    const totalPages = Math.max(Math.ceil(transactionTotal / rowsPerPage), 1);
+
 
     const handleNextPageClick = () => {
         if (currentPage * rowsPerPage < transactionTotal) {
@@ -113,7 +114,7 @@ const TransactionTable = ({ headerLabels = [], tableData = [], onViewClick, isCo
             <table className="transaction-table">
                 <thead>
                     <tr>
-                        {(role === "admin" ? headerLabels.slice(0, 8) : headerLabels.slice(0, 6)).map((item, index) => (
+                        {(role === "admin" ? headerLabels.slice(0, 8) : headerLabels.slice(0, 7)).map((item, index) => (
                             <th key={index}>{item.heading}</th>
                         ))}
                         {isAction && (<th>Actions</th>)}
@@ -127,11 +128,11 @@ const TransactionTable = ({ headerLabels = [], tableData = [], onViewClick, isCo
                                 <tr className={`${expandedRows.includes(index) ? 'expanded-parent' : ''} ${hoveredRow === index ? 'hovered' : ''}`}
                                     onMouseEnter={() => handleMouseEnter(index)}
                                     onMouseLeave={handleMouseLeave}>
-                                    {(role === "admin" ? headerLabels.slice(0, 8) : headerLabels.slice(0, 6)).map((item, colIndex) => {
+                                    {(role === "admin" ? headerLabels.slice(0, 8) : headerLabels.slice(0, 7)).map((item, colIndex) => {
                                         if (colIndex === 0) {
                                             return <td key={item.label} onClick={() => handleCopy(row[item.label])} className={expandedRows.includes(index) ? "remover" : ""}>{(currentPage - 1) * rowsPerPage + index + 1}</td>;
                                         }
-                                        if ((role === "admin" && colIndex === 5) || (role !== "admin" && colIndex === 3)) {
+                                        if (item.label === "status") {
                                             const statusValue = row[item.label]?.toLowerCase() || "";
                                             const statusClass =
                                                 statusValue === "success"
@@ -227,7 +228,7 @@ const TransactionTable = ({ headerLabels = [], tableData = [], onViewClick, isCo
                                             <div className="expanded-content">
                                                 <div className="expanded-content-row">
                                                     <div className="expanded-left">
-                                                        {(role === "admin" ? headerLabels.slice(8, 11) : headerLabels.slice(6, 9)).map((item, index) => (
+                                                        {(role === "admin" ? headerLabels.slice(8, 10) : headerLabels.slice(7, 9)).map((item, index) => (
                                                             <div key={index} className="expand-item">
                                                                 <div className="expanded-details">
                                                                     <span className="expand-text">{item.heading}</span>
@@ -235,12 +236,13 @@ const TransactionTable = ({ headerLabels = [], tableData = [], onViewClick, isCo
                                                                         {row[item.label]}
                                                                     </span>
                                                                 </div>
-                                                                {(index === 0 || index === 1) && <div className="divider-div"></div>}
+                                                                {/* {(index === 0 || index === 1) && <div className="divider-div"></div>} */}
+                                                                {(index === 0 ) && <div className="divider-div"></div>}
                                                             </div>
                                                         ))}
                                                     </div>
                                                     <div className="expanded-center">
-                                                        {(role === "admin" ? headerLabels.slice(11) : headerLabels.slice(9)).map((item, index) => (
+                                                        {(role === "admin" ? headerLabels.slice(10) : headerLabels.slice(9)).map((item, index) => (
                                                             <React.Fragment key={index}>
                                                                 <div className="card-rows">
 
@@ -316,7 +318,7 @@ const TransactionTable = ({ headerLabels = [], tableData = [], onViewClick, isCo
                     ) : loading ? (<>
                         <tbody>
                             <tr className="js-table-row-loader">
-                                <td colSpan={Math.max(6, (role === "admin" ? headerLabels.slice(0, 8) : headerLabels.slice(0, 6)).length + (isAction ? 1 : 0))} className="table-cell-loader">
+                                <td colSpan={Math.max(6, (role === "admin" ? headerLabels.slice(0, 8) : headerLabels.slice(0, 8)).length + (isAction ? 1 : 0))} className="table-cell-loader">
                                     {[...Array(3)].map((_, index) => (
                                         <div key={index}>
                                             <div className="row-loader u-flex">

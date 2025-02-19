@@ -265,11 +265,18 @@ input:-webkit-autofill {
 }
 
 .portal-header .profileSection .img-section {
-    background-color: #546090fc;
+    background-color: #1C1C1C0D;
     height: 30px;
     width: 30px;
     border-radius: 50%;
     overflow: hidden;
+    color: #003366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .portal-header .profileSection .details-section {
@@ -2481,9 +2488,16 @@ svg {
 
 .profile-avatar {
     background-color: #1C1C1C0D;
+    color: #002966;
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
     overflow: hidden;
 }
 

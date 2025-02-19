@@ -130,6 +130,11 @@ const Auth = () => {
       }
     });
 
+    if (fields.contact && !/^\d+$/.test(fields.contact)) {
+      newErrors.contact = "Contact should be of integer type.";
+      formIsValid = false;
+    }
+    
     if (!termsAccepted) {
       setError("Please accept the privacy policy and terms");
       setErrorIcon("fail"); 
@@ -255,9 +260,16 @@ const Auth = () => {
       setError((prev) => ({ ...prev, companyURL: "Company URL is required." }));
     }
 
-    if (name === "contact" && !value.trim()) {
-      setError((prev) => ({ ...prev, contact: "Contact is required." }));
+    if (name === "contact") {
+      if (!value.trim()) {
+        setError((prev) => ({ ...prev, contact: "Contact is required." }));
+      } else if (!/^\d+$/.test(value)) {
+        setError((prev) => ({ ...prev, contact: "Contact should be of integer type." }));
+      } else {
+        setError((prev) => ({ ...prev, contact: "" }));
+      }
     }
+  
   };
 
   return (

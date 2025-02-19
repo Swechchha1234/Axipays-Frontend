@@ -6,7 +6,6 @@ import Icon from "../media/icon/icons";
 
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import Skeleton from "../components/Skeleton.jsx";
 
 import LineChart from "../components/LineChart";
 import { apiRequest } from "../services/apiService";
@@ -21,7 +20,7 @@ import dashboardimage from "../media/image/Dashboard_demo.png";
 import Heading, { headings } from "../components/utilitis/Heading";
 
 function Dashboard() {
-	const [loading, setLoading] = useState(true);
+	const [, setLoading] = useState(true);
 	const [, setErrorMessage] = useState("");
 	const [searchedResult, setSearchedResult] = useState([]);
 	const [isOpen, setIsOpen] = useState(false);
@@ -79,10 +78,6 @@ function Dashboard() {
 	};
 
 	const fetchTransactionData = async (pageNumber, pageSize) => {
-		if (role === "client") {
-			setLoading(false)
-			return;
-		}
 		setLoading(true);
 		try {
 			const response = await apiRequest(
@@ -90,7 +85,7 @@ function Dashboard() {
 				"GET"
 			);
 			const transactions = response?.data?.transactions;
-
+			console.log("transac",transactions)
 			if (Array.isArray(transactions)) {
 				const modifiedData = transactions.reverse().map((item) => ({
 					...item,
@@ -100,6 +95,7 @@ function Dashboard() {
 				const totalTransactions = response?.data?.total_records || 0;
 				setTransactionTotal(totalTransactions);
 				setSearchedResult(modifiedData);
+				
 				setErrorMessage("");
 			} else {
 				setSearchedResult([]);
@@ -160,9 +156,9 @@ function Dashboard() {
 	const [headerLabels] = useState([
 		{ heading: "S.No", label: "sno" },
 		{ heading: "Transaction Ref", label: "transaction_ref" },
-		{ heading: "Merchant Trans ID", label: "merchant_txn_id" },
+		{ heading: "Client Txn ID", label: "client_txn_id" },
 		{ heading: "Customer Name", label: "full_name" },
-		{ heading: "Merchant Name", label: "merchant_name" },
+		// { heading: "Merchant Name", label: "client_name" },
 		{ heading: "Status", label: "status" },
 		{ heading: "Message", label: "message" },
 		{ heading: "Transaction Date", label: "CreatedAt" },
@@ -174,6 +170,23 @@ function Dashboard() {
 		{ heading: "Amount", label: "amount" },
 		{ heading: "Currency", label: "currency_code" },
 	]);
+
+	const [merchant_headerLabels] = useState([
+			{ heading: "S.No", label: "sno" },
+			{ heading: "Txn ID", label: "transaction_ref" },
+			{ heading: "Client Txn ID", label: "client_txn_id" },
+			{ heading: "Customer Name", label: "full_name" },
+			{ heading: "Status", label: "status" },
+			{ heading: "Message", label: "message" },
+			{ heading: "Transaction Date", label: "transaction_date" },
+			{ heading: "Email", label: "email" },
+			// { heading: "Phone No.", label: "phone" },
+			{ heading: "Card Number", label: "card_number" },
+			{ heading: "Country", label: "country" },
+			{ heading: "Card Type", label: "card_type" },
+			{ heading: "Amount", label: "amount" },
+			{ heading: "currency", label: "currency_code" },
+		])
 
 	const footerContent = (
 		<div className="footer-text-container">
@@ -239,16 +252,12 @@ function Dashboard() {
 			<>
 				<Header />
 				<Sidebar />
-				{loading ? (
-					<div className="main-screen">
-						<Skeleton />
-					</div>
-				) : (
+	
 					<div className="main-screen dashboard">
 						<Heading heading={headings.dashboard} />
 						{/* Cards showing stats about volume and traffic for a single day for each currency*/}
 
-						<div className="db-glance">
+						<div className={role === "client" ? "db-table-disable" : "db-glance"}>
 							<div className="db-glance-date-selector">
 								<p>Today</p>
 								<div className="ic">
@@ -352,7 +361,7 @@ function Dashboard() {
 
 						{/* {Filters} */}
 
-						<div className="db-filters">
+						<div className={role === "client" ? "db-table-disable" : "db-filters"}>
 							<div className="manage-main-head db-filters-head">
 								<h4>Customization</h4>
 							</div>
@@ -400,7 +409,7 @@ function Dashboard() {
 
 						{/* Cards showing stats about volume, traffic and approvals for a selected range of 7 days*/}
 
-						<div className="db-details">
+						<div className={role === "client" ? "db-table-disable" : "db-details" }>
 							<div className="db-details-approvals">
 								<div className="approvals-div">
 									<div className="today-stats-head">
@@ -520,9 +529,9 @@ function Dashboard() {
 						</div>
 
 						{/* Table showing latest transactions */}
-						<div className={role === "client" ? "db-table-disable" : "db-table"}>
+						<div className="db-table">
 							<Table
-								headerLabels={headerLabels}
+								headerLabels={role === "client" ? merchant_headerLabels : headerLabels}
 								tableData={searchedResult}
 								transactionTotal={transactionTotal}
 								currentPage={currentPage}
@@ -534,8 +543,7 @@ function Dashboard() {
 
 						{footerContent}
 
-					</div>
-				)}
+				</div>
 			</>
 		);
 	}

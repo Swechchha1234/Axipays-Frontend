@@ -15,13 +15,13 @@ const getHeaders = () => ({
 
 const handleError = (error) => {
     if (error.response) {
-        console.error('Error Response:', error.response.data);
+        // console.error('Error Response:', error.response.data);
         throw new Error(error.response.data.message || 'Server error occurred');
     } else if (error.request) {
-        console.error('No Response:', error.request);
+        // console.error('No Response:', error.request);
         throw new Error('No response from server');
     } else {
-        console.error('Error:', error.message);
+        // console.error('Error:', error.message);
         throw new Error(error.message);
     }
 };
@@ -59,10 +59,10 @@ const apiRequest = async (path, method = 'POST', body = null) => {
 // Decode JWT token and store the extracted details
     function decodeToken(token) 
     {
-        console.log(token)
+        // console.log(token)
         // Check if token is a non-empty string
         if (typeof token !== 'string' || !token.trim()) {
-            console.error("Token is not a valid string");
+            // console.error("Token is not a valid string");
             return null;
         }
 
@@ -74,7 +74,7 @@ const apiRequest = async (path, method = 'POST', body = null) => {
                     // console.warn(`Field "${field}" is missing in the decoded token`);
                 }
             });
-            console.log(decoded)
+            // console.log(decoded)
             return decoded;
         } catch (error) {
             // console.error("Invalid token", error);
@@ -91,7 +91,7 @@ export const login = async (email, password) => {
         // sessionStorage.clear();
 
         const decoded = decodeToken(loginData);
-        console.log(response)
+        // console.log(response)
         if (decoded) {
             sessionStorage.setItem('userName', decoded.username);
             sessionStorage.setItem('userId', decoded.userId);
